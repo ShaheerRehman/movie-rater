@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import MovieList from './components/movie-list'
+import MovieList from './components/movie-list';
+import MovieDetails from './components/movie-details';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -31,15 +32,7 @@ function App() {
             <MovieList movies={movies} movieClicked={movieClicked}/>
           </div>
           <div>
-            {movies.map(movie=> {
-            return(
-              <div key={movie.description}>
-              <h2>{movie.description}</h2>
-              </div>
-            )
-          }
-            
-            )}
+            <MovieDetails movie={selectedMovie}/>
           </div>
       </div>
     </div>
