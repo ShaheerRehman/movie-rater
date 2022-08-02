@@ -9,3 +9,13 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.orange{
+  color: orange;
+}
+.purple{
+  color: purple;
+}
+.contain .fa-star{
+  font-size:1.3rem;
+  cursor: pointer;
+}
