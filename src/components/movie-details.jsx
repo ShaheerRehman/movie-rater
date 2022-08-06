@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import Stars from './rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import {useCookies} from "react-cookie";
 
 
 const MovieDetails = (props) => {
     const [highlighted, setHighlighted] = useState(-1)
-    // const highlightRate = high => () => setHighlighted(high);
+    // const highlightRate = high => () => setHighlighted(high);\
+    const [token] = useCookies(['mr-token'])
+
     const highlightRate = function (high){
         return function() {
         setHighlighted(high)
@@ -18,7 +21,7 @@ const MovieDetails = (props) => {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": "Token a133158a036b647ba09191b94d6661c9e67f38c9"
+              "Authorization": `Token ${token['mr-token']}`
             },
             body: JSON.stringify({stars:rate+1})
         })
@@ -32,7 +35,8 @@ const MovieDetails = (props) => {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": "Token a133158a036b647ba09191b94d6661c9e67f38c9"
+                "Authorization": `Token ${token['mr-token']}`
+
             }
         })
           .then(resp=>resp.json())
@@ -59,6 +63,7 @@ const MovieDetails = (props) => {
             onMouseLeave={highlightRate(-1)}
             onClick={rateClicked(i)} />})}
             </div>
+
             </>
             ):null}
         </>
