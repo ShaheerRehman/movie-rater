@@ -1,7 +1,7 @@
 // const TOKEN = "a133158a036b647ba09191b94d6661c9e67f38c9";
 export default class API {
   static updateMovie(mov_id, body, token) {
-    return fetch(`${process.env.REACT_APP_API_URL}/${mov_id}/`, {
+    return fetch(`https://movie-rater-shaheer.herokuapp.com/${mov_id}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -12,7 +12,7 @@ export default class API {
   }
 
   static createMovie(body, token) {
-    return fetch(`${process.env.REACT_APP_API_URL}/api/movies/`, {
+    return fetch(`https://movie-rater-shaheer.herokuapp.com/api/movies/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -23,16 +23,19 @@ export default class API {
   }
 
   static removeMovie(mov_id, token) {
-    return fetch(`${process.env.REACT_APP_API_URL}/api/movies/${mov_id}/`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${token["mr-token"]}`,
-      },
-    });
+    return fetch(
+      `https://movie-rater-shaheer.herokuapp.com/api/movies/${mov_id}/`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${token["mr-token"]}`,
+        },
+      }
+    );
   }
   static loginUser(body) {
-    return fetch(`${process.env.REACT_APP_API_URL}/auth/`, {
+    return fetch(`https://movie-rater-shaheer.herokuapp.com/auth/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +44,7 @@ export default class API {
     }).then((resp) => resp.json());
   }
   static getMovies(token) {
-    return fetch(`${process.env.REACT_APP_API_URL}/api/movies/`, {
+    return fetch(`https://movie-rater-shaheer.herokuapp.com/api/movies/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +54,7 @@ export default class API {
   }
 
   static registerUser(body) {
-    return fetch(`${process.env.REACT_APP_API_URL}/api/users/`, {
+    return fetch(`https://movie-rater-shaheer.herokuapp.com/api/users/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
